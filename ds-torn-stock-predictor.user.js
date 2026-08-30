@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         D's Torn Stock Predictor - Beta
 // @namespace    https://github.com/djoiner89/torn-stock-tools
-// @version      0.1
+// @version      0.2
 // @description  Torn stock predictor with opportunity ranking, daily history, backtesting, and retry-safe market scanning
 // @match        https://www.torn.com/page.php?sid=stocks*
 // @updateURL    https://raw.githubusercontent.com/djoiner89/torn-stock-tools/main/ds-torn-stock-predictor.user.js
@@ -4076,7 +4076,7 @@
             <div id="dstp-header">
 
                 <div id="dstp-title">
-                    📈 D's Torn Stock Predictor - Beta - 0.1
+                    📈 D's Torn Stock Predictor - Beta - 0.2
                 </div>
 
                 <button id="dstp-close">
