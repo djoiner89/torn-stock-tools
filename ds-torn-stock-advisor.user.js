@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         D's Torn Stock Advisor - Beta
 // @namespace    https://github.com/djoiner89/torn-stock-tools
-// @version      0.1
+// @version      0.2
 // @description  Torn stock advisor for portfolio analysis, buy/sell guidance, and stock market decision support
 // @match        https://www.torn.com/page.php?sid=stocks*
 // @updateURL    https://raw.githubusercontent.com/djoiner89/torn-stock-tools/main/ds-torn-stock-advisor.user.js
@@ -447,7 +447,13 @@
         const key =
             prompt(
                 'Enter your Torn API key.\n\n' +
-                'It will only be stored locally in this browser.'
+                'TORN API PRIVACY / USE\n' +
+                '• Purpose: Read your stock holdings, Torn stock data, item data, and Item Market prices for portfolio and benefit analysis.\n' +
+                '• Data storage: API key, settings, and market cache are stored only in this browser.\n' +
+                '• Data sharing: Nobody. Nothing is sent to the developer or any third party.\n' +
+                '• Key storage/sharing: Stored locally in your browser and never shared.\n' +
+                '• Required access: User stocks plus the Torn/Market selections used by this tool.\n\n' +
+                'By entering a key, you acknowledge this local-only use.'
             );
 
 
