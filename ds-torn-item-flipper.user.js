@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         D's Torn Item Flipper - Beta
 // @namespace    https://github.com/djoiner89/torn-stock-tools
-// @version      1.1
+// @version      1.1.1
 // @description  Scans Torn Item Market listings for realistic flip opportunities, market depth, ROI, and estimated profit.
 // @match        https://www.torn.com/*
 // @updateURL    https://raw.githubusercontent.com/djoiner89/torn-stock-tools/main/ds-torn-item-flipper.user.js
@@ -29,6 +29,9 @@
 
     const MIN_PROFIT_STORAGE =
         'dtif_min_profit';
+
+    const RESULTS_STORAGE =
+        'dtif_last_results_v1';
 
     const BUDGET_STORAGE =
         'dtif_budget';
@@ -1710,7 +1713,7 @@
         panel.innerHTML = `
             <div id="dtif-header">
                 <div id="dtif-title">
-                    🛒 D's Torn Item Flipper - 1.1
+                    🛒 D's Torn Item Flipper - 1.1.1
                 </div>
 
                 <button id="dtif-close">
@@ -2925,6 +2928,13 @@
             currentResults =
                 results;
 
+            // Preserve the most recent successful scan when Torn
+            // navigates/reloadss between Item Market pages.
+            saveJSON(
+                RESULTS_STORAGE,
+                currentResults
+            );
+
             status.innerHTML = `
                 <strong class="${
                     failures.length
@@ -3024,6 +3034,56 @@
                 )
                 .value =
                     minProfit;
+        }
+
+        const savedResults =
+            loadJSON(
+                RESULTS_STORAGE,
+                []
+            );
+
+        if (
+            Array.isArray(savedResults) &&
+            savedResults.length
+        ) {
+            currentResults =
+                savedResults;
+
+            const restoredBudget =
+                parseMoneyInput(
+                    panel.querySelector(
+                        '#dtif-budget'
+                    ).value
+                );
+
+            const restoredROI =
+                Number(
+                    panel.querySelector(
+                        '#dtif-min-roi'
+                    ).value
+                ) || 0;
+
+            const restoredProfit =
+                parseMoneyInput(
+                    panel.querySelector(
+                        '#dtif-min-profit'
+                    ).value
+                ) || 0;
+
+            panel.querySelector(
+                '#dtif-status'
+            ).innerHTML = `
+                <span class="dtif-green">
+                    Last scan restored
+                </span>
+            `;
+
+            renderResults(
+                currentResults,
+                restoredROI,
+                restoredProfit,
+                restoredBudget
+            );
         }
 
         panel
