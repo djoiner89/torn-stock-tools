@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         D's Torn Item Flipper - Beta
 // @namespace    https://github.com/djoiner89/torn-stock-tools
-// @version      1.1.1
+// @version      1.1.2
 // @description  Scans Torn Item Market listings for realistic flip opportunities, market depth, ROI, and estimated profit.
 // @match        https://www.torn.com/*
 // @updateURL    https://raw.githubusercontent.com/djoiner89/torn-stock-tools/main/ds-torn-item-flipper.user.js
@@ -287,7 +287,13 @@
         const key =
             prompt(
                 'Enter your Torn API key.\n\n' +
-                'It is stored only in this browser.'
+                'TORN API PRIVACY / USE\n' +
+                '• Purpose: Read Torn item and Item Market data to find flip opportunities.\n' +
+                '• Data storage: API key, settings, cache, and scan results are stored only in this browser.\n' +
+                '• Data sharing: Nobody. Nothing is sent to the developer or any third party.\n' +
+                '• Key storage/sharing: Stored locally in your browser and never shared.\n' +
+                '• Required access: Only Torn item data and Market Item Market data used by this tool.\n\n' +
+                'By entering a key, you acknowledge this local-only use.'
             );
 
         if (!key) {
@@ -1713,7 +1719,7 @@
         panel.innerHTML = `
             <div id="dtif-header">
                 <div id="dtif-title">
-                    🛒 D's Torn Item Flipper - 1.1.1
+                    🛒 D's Torn Item Flipper - 1.1.2
                 </div>
 
                 <button id="dtif-close">
@@ -3158,7 +3164,7 @@
                 () => {
                     const key =
                         prompt(
-                            'Enter a new Torn API key:'
+                            'Enter a new Torn API key.\n\nYour key is stored only in this browser, used only for Torn item / Item Market data, and is never shared with the developer or third parties.'
                         );
 
                     if (key) {
